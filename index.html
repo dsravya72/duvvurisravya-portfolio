@@ -63,6 +63,9 @@
             </ul>
           </div>
 
+
+          
+          <!-- Project section code below -->
           <aside class="card col-4">
             <h3>Contact</h3>
             <p class="muted">Email: <a href="mailto:you@example.com">you@example.com</a></p>
@@ -104,9 +107,10 @@
                 <div class="project-links">
                   <a href="#">Live demo</a>
                   <a href="#">Source</a>
-                </div>
+                </div> 
               </div>
             </article>
+            
 
             <article class="card project-card">
               <div class="project-image" role="img" aria-label="Screenshot of Project Three"></div>
@@ -125,8 +129,27 @@
             </article>
           </div>
         </div>
+         <!-- View More Button -->
+    <!-- <div class="text-center">
+      <a class="cta view-more" href="projects.html">View More Projects</a>
+    </div>  -->
+    
+    <div class="container">
+    <!-- View More Button -->
+    <div class="text-right">
+  <a class="cta view-more" href="projects.html">View More Projects</a>
+    </div>
+  </div>
+</section>
+  </div>
+</div>
+
+         
       </section>
 
+      <!--end of project section code  -->
+
+      
       <section id="contact">
         <div class="container card">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
@@ -163,7 +186,7 @@
 
     <footer class="site-footer">
       <div class="container text-center muted">
-        © <span id="year"></span> Your Name — Built with HTML & CSS
+        © <span id="year"></span> Sravya Duvvuri - Built with HTML & CSS
       </div>
     </footer>
 
@@ -191,38 +214,52 @@
 
         function rand(min, max) { return Math.random() * (max - min) + min; }
 
+  // palette from user: yellow, slightly darker yellow, orange, deep brown
+  const PALETTE = ['#FFD93D', '#E6C033', '#FF9A00', '#4F200D'];
+
+        function hexToRgba(hex, alpha = 1) {
+          const v = hex.replace('#','');
+          const bigint = parseInt(v, 16);
+          const r = (bigint >> 16) & 255;
+          const g = (bigint >> 8) & 255;
+          const b = bigint & 255;
+          return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+
         class Ball {
           constructor() {
-            // 3D-like coordinates: x, y on screen, z for depth
             this.x = rand(0, w);
             this.y = rand(0, h);
-            this.z = rand(0.2, 1.5); // depth, smaller = further
+            this.z = rand(0.3, 1.6);
             this.r = rand(3, 10) * (1 / this.z);
             const speed = rand(6, 40) * (1 / this.z);
             const angle = rand(0, Math.PI * 2);
             this.vx = Math.cos(angle) * speed * 0.02;
             this.vy = Math.sin(angle) * speed * 0.02;
-            this.hue = rand(200, 260);
-            this.alpha = rand(0.3, 0.9);
+            // circles only
+            this.shape = 'circle';
+            this.color = PALETTE[Math.floor(rand(0, PALETTE.length))];
+            this.alpha = rand(0.35, 0.95);
           }
 
           update(dt) {
             this.x += this.vx * dt;
             this.y += this.vy * dt;
-            // wrap around
-            if (this.x < -50) this.x = w + 50;
-            if (this.x > w + 50) this.x = -50;
-            if (this.y < -50) this.y = h + 50;
-            if (this.y > h + 50) this.y = -50;
+            if (this.x < -80) this.x = w + 80;
+            if (this.x > w + 80) this.x = -80;
+            if (this.y < -80) this.y = h + 80;
+            if (this.y > h + 80) this.y = -80;
           }
 
           draw(ctx) {
-            // simple radial gradient to look 3D
-            const grd = ctx.createRadialGradient(this.x - this.r*0.4, this.y - this.r*0.6, this.r*0.1, this.x, this.y, this.r);
-            grd.addColorStop(0, `hsla(${this.hue},80%,95%,${this.alpha})`);
-            grd.addColorStop(0.4, `hsla(${this.hue},80%,70%,${this.alpha})`);
-            grd.addColorStop(1, `hsla(${this.hue},80%,50%,${this.alpha * 0.6})`);
-
+            // draw circle particle
+            const start = hexToRgba(this.color, this.alpha);
+            const mid = hexToRgba(this.color, Math.max(0.5, this.alpha - 0.15));
+            const end = hexToRgba(this.color, Math.max(0.2, this.alpha - 0.45));
+            const grd = ctx.createRadialGradient(this.x - this.r * 0.35, this.y - this.r * 0.6, this.r * 0.08, this.x, this.y, this.r);
+            grd.addColorStop(0, start);
+            grd.addColorStop(0.45, mid);
+            grd.addColorStop(1, end);
             ctx.beginPath();
             ctx.fillStyle = grd;
             ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
@@ -232,7 +269,7 @@
 
         function init() {
           particles.length = 0;
-          for (let i = 0; i < Math.max(16, COUNT); i++) particles.push(new Ball());
+          for (let i = 0; i < Math.max(18, COUNT); i++) particles.push(new Ball());
         }
 
         let last = performance.now();
@@ -254,6 +291,15 @@
             p.y += cy * (1 / p.z) * 0.3;
             p.update(dt);
             p.draw(ctx);
+          }
+          
+          // remove expired temporary particles (they have a 'lifespan' property)
+          for (let i = particles.length - 1; i >= 0; i--) {
+            const p = particles[i];
+            if (p.lifespan !== undefined) {
+              p.lifespan -= dt;
+              if (p.lifespan <= 0) particles.splice(i, 1);
+            }
           }
 
           requestAnimationFrame(frame);
@@ -278,7 +324,44 @@
           init();
         });
 
-        init();
+  init();
+
+        // Emit helper: spawn a small temporary particle burst at (x,y)
+        function emitAt(x, y, count = 2) {
+          for (let i = 0; i < count; i++) {
+            const b = new Ball();
+            b.x = x;
+            b.y = y;
+            // give an outward/random pop
+            const ang = rand(0, Math.PI * 2);
+            const speed = rand(60, 140) * 0.02;
+            b.vx = Math.cos(ang) * speed;
+            b.vy = Math.sin(ang) * speed;
+            b.alpha = 1;
+            b.r = rand(6, 12);
+            b.lifespan = 60; // frames-ish (reduced by dt each frame)
+            particles.push(b);
+          }
+        }
+
+        // attach hover/focus listeners to emit two balls when hovering interactive controls
+        function attachHoverEmitters() {
+          // include CTA links, regular buttons and navigation links
+          const els = document.querySelectorAll('a.cta, button, .nav a');
+          els.forEach((el) => {
+            const emitFromEl = () => {
+              const r = el.getBoundingClientRect();
+              emitAt(r.left + r.width / 2, r.top + r.height / 2, 2);
+            };
+            el.addEventListener('mouseenter', emitFromEl);
+            el.addEventListener('focus', emitFromEl);
+            // support touch devices (tap)
+            el.addEventListener('touchstart', emitFromEl, { passive: true });
+          });
+        }
+
+        attachHoverEmitters();
+
         requestAnimationFrame(frame);
       })();
 

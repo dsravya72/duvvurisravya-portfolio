@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Sravya Duvvuri — Projects</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <strong>Sravya Duvvuri</strong>
+            <div class="muted">Professor Name</div>
+          </div>
+            <!-- <div class="muted">Digital Media Artist & Web Developer</div>
+          </div> -->
+        </div>
+
+        <nav class="nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="projects">
+        <div class="container">
+          <h1>My Projects</h1>
+          <p class="muted">Here are some of the projects I've worked on, blending creativity with front-end development.</p>
+
+          <div class="projects-grid">
+            <!-- Project 1 -->
+            <article class="card project-card">
+              <div class="project-image" role="img" aria-label="Screenshot of Project One">
+                <img src="https://via.placeholder.com/600x400" alt="Project One Screenshot" />
+              </div>
+              <div class="project-meta">
+                <h3>Project One</h3>
+                <p class="muted">This project is a responsive portfolio website built with HTML, CSS, and JavaScript (p5.js).</p>
+                <div class="project-tags">
+                  <span class="tag">HTML</span>
+                  <span class="tag">CSS</span>
+                  <span class="tag">JavaScript</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" target="_blank">Live Demo</a>
+                  <a href="#" target="_blank">View Source</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="card project-card">
+              <div class="project-image" role="img" aria-label="Screenshot of Project Two">
+                <img src="https://via.placeholder.com/600x400" alt="Project Two Screenshot" />
+              </div>
+              <div class="project-meta">
+                <h3>Project Two</h3>
+                <p class="muted">A React-based blog with dynamic content loaded via an API. Fully responsive and accessible.</p>
+                <div class="project-tags">
+                  <span class="tag">React</span>
+                  <span class="tag">API</span>
+                  <span class="tag">CSS</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" target="_blank">Live Demo</a>
+                  <a href="#" target="_blank">View Source</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="card project-card">
+              <div class="project-image" role="img" aria-label="Screenshot of Project Three">
+                <img src="https://via.placeholder.com/600x400" alt="Project Three Screenshot" />
+              </div>
+              <div class="project-meta">
+                <h3>Project Three</h3>
+                <p class="muted">An e-commerce site with integrated payment gateway using Node.js and Express.</p>
+                <div class="project-tags">
+                  <span class="tag">Node.js</span>
+                  <span class="tag">Express</span>
+                  <span class="tag">MongoDB</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" target="_blank">Live Demo</a>
+                  <a href="#" target="_blank">View Source</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- More Projects can be added here -->
+
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container card">
+          <h2>Get in Touch</h2>
+          <p class="muted">Interested in collaborating or have a question? Feel free to reach out!</p>
+          <a class="cta" href="mailto:you@example.com">Email me</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container text-center muted">
+        © <span id="year"></span>  Sravya Duvvuri — Designed and developed by me.
+      </div>
+    </footer>
+
+    <script>
+      // Small script to set the year dynamically
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
