@@ -1,12 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-<body>
-	<h1>Welcome to your basic HTML page!</h1>
-	<p>This is a simple index.html template.</p>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Sravya Duvvuri — Portfolio</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <strong>Sravya Duvvuri</strong>
+            <div class="muted">Profession Name</div>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-left">
+            <h1>Hi there, I'm <strong>Sravya Duvvuri</strong></h1>
+            <p>
+              Explore, discover, and create. Currently pursuing a Master's in Liberal Arts and Science, my passion for art led me to combine visual design with front-end development, crafting polished, user-focused web experiences
+            </p>
+            <a class="cta" href="#projects">View my work</a>
+          </div>
+
+          <figure class="profile-figure" aria-hidden="false">
+            <div class="profile-shape">
+              <!-- Replace the src below with your profile image (square) -->
+              <img src="https://via.placeholder.com/720" alt="Sravya Duvvuri profile picture"/>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container grid">
+          <div class="card col-8">
+            <h2>About me</h2>
+            <p class="muted">
+              As a Digital Media creator with a passion for art and creativity, I’ve also embraced coding through HTML, CSS, and p5.js to bring design concepts to life with interactive, accessible web experiences
+            </p>
+
+            <h3 class="mb-1">Skills</h3>
+            <ul>
+             <li>Graphic Design</li>
+			 <li>Web Design</li>
+            <li>HTML & CSS (responsive, accessibility); JavaScript (p5.js)</li>
+            <li>Adobe Creative Suite (Photoshop, Illustrator, After Effects, Premiere Pro, InDesign)</li>
+			<li>3D Animation - Blender</li>
+            </ul>
+          </div>
+
+          <aside class="card col-4">
+            <h3>Contact</h3>
+            <p class="muted">Email: <a href="mailto:you@example.com">you@example.com</a></p>
+            <p class="muted">Location: Your City, Country</p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="container">
+          <h2>Selected projects</h2>
+          <div class="projects-grid">
+            <article class="card project-card">
+              <div class="project-image" role="img" aria-label="Screenshot of Project One"></div>
+              <div class="project-meta">
+                <h3>Project One</h3>
+                <p class="muted">A short description of the project and the technologies used.</p>
+                <div class="project-tags">
+                  <span class="tag">HTML</span>
+                  <span class="tag">CSS</span>
+                  <span class="tag">JavaScript</span>
+                </div>
+                <div class="project-links">
+                  <a href="#">Live demo</a>
+                  <a href="#">Source</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="card project-card">
+              <div class="project-image" role="img" aria-label="Screenshot of Project Two"></div>
+              <div class="project-meta">
+                <h3>Project Two</h3>
+                <p class="muted">A short description of the project and the technologies used.</p>
+                <div class="project-tags">
+                  <span class="tag">React</span>
+                  <span class="tag">API</span>
+                </div>
+                <div class="project-links">
+                  <a href="#">Live demo</a>
+                  <a href="#">Source</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="card project-card">
+              <div class="project-image" role="img" aria-label="Screenshot of Project Three"></div>
+              <div class="project-meta">
+                <h3>Project Three</h3>
+                <p class="muted">A short description of the project and the technologies used.</p>
+                <div class="project-tags">
+                  <span class="tag">Node</span>
+                  <span class="tag">Express</span>
+                </div>
+                <div class="project-links">
+                  <a href="#">Live demo</a>
+                  <a href="#">Source</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container card">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+            <div style="flex:1;min-width:260px;">
+              <h2>Get in touch</h2>
+              <p class="muted">Interested in working together? Send a message or email me at <a href="mailto:you@example.com">you@example.com</a>.</p>
+            </div>
+
+            <form action="#" method="post" style="flex:1;min-width:300px;">
+              <div class="form-row">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input id="name" type="text" name="name" required />
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input id="email" type="email" name="email" required />
+                </div>
+              </div>
+
+              <div style="margin-top:0.75rem;">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+              </div>
+
+              <div style="margin-top:0.75rem;text-align:right;">
+                <button class="cta" type="submit">Send message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container text-center muted">
+        © <span id="year"></span> Your Name — Built with HTML & CSS
+      </div>
+    </footer>
+
+    <!-- Canvas for 3D-looking particles (balls) -->
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <script>
+      // Particle background: small 3D-looking balls
+      (function () {
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let w = (canvas.width = innerWidth);
+        let h = (canvas.height = innerHeight);
+        const DPR = Math.max(1, window.devicePixelRatio || 1);
+        canvas.width = w * DPR;
+        canvas.height = h * DPR;
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+        ctx.scale(DPR, DPR);
+
+        const particles = [];
+        const COUNT = Math.min(80, Math.floor((w * h) / 60000)); // scale with viewport
+
+        function rand(min, max) { return Math.random() * (max - min) + min; }
+
+        class Ball {
+          constructor() {
+            // 3D-like coordinates: x, y on screen, z for depth
+            this.x = rand(0, w);
+            this.y = rand(0, h);
+            this.z = rand(0.2, 1.5); // depth, smaller = further
+            this.r = rand(3, 10) * (1 / this.z);
+            const speed = rand(6, 40) * (1 / this.z);
+            const angle = rand(0, Math.PI * 2);
+            this.vx = Math.cos(angle) * speed * 0.02;
+            this.vy = Math.sin(angle) * speed * 0.02;
+            this.hue = rand(200, 260);
+            this.alpha = rand(0.3, 0.9);
+          }
+
+          update(dt) {
+            this.x += this.vx * dt;
+            this.y += this.vy * dt;
+            // wrap around
+            if (this.x < -50) this.x = w + 50;
+            if (this.x > w + 50) this.x = -50;
+            if (this.y < -50) this.y = h + 50;
+            if (this.y > h + 50) this.y = -50;
+          }
+
+          draw(ctx) {
+            // simple radial gradient to look 3D
+            const grd = ctx.createRadialGradient(this.x - this.r*0.4, this.y - this.r*0.6, this.r*0.1, this.x, this.y, this.r);
+            grd.addColorStop(0, `hsla(${this.hue},80%,95%,${this.alpha})`);
+            grd.addColorStop(0.4, `hsla(${this.hue},80%,70%,${this.alpha})`);
+            grd.addColorStop(1, `hsla(${this.hue},80%,50%,${this.alpha * 0.6})`);
+
+            ctx.beginPath();
+            ctx.fillStyle = grd;
+            ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        function init() {
+          particles.length = 0;
+          for (let i = 0; i < Math.max(16, COUNT); i++) particles.push(new Ball());
+        }
+
+        let last = performance.now();
+        let running = true;
+
+        function frame(now) {
+          if (!running) return;
+          const dt = Math.min(32, now - last) / 16.666; // normalize to ~60fps
+          last = now;
+          ctx.clearRect(0, 0, w, h);
+
+          // subtle parallax based on mouse
+          const cx = mouse.x / w - 0.5;
+          const cy = mouse.y / h - 0.5;
+
+          for (const p of particles) {
+            // apply parallax: nearer particles move more relative to center
+            p.x += cx * (1 / p.z) * 0.3;
+            p.y += cy * (1 / p.z) * 0.3;
+            p.update(dt);
+            p.draw(ctx);
+          }
+
+          requestAnimationFrame(frame);
+        }
+
+        const mouse = { x: w / 2, y: h / 2 };
+        addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+        addEventListener('visibilitychange', () => {
+          running = document.visibilityState === 'visible';
+          if (running) { last = performance.now(); requestAnimationFrame(frame); }
+        });
+
+        addEventListener('resize', () => {
+          w = canvas.width = innerWidth;
+          h = canvas.height = innerHeight;
+          canvas.width = w * DPR;
+          canvas.height = h * DPR;
+          canvas.style.width = w + 'px';
+          canvas.style.height = h + 'px';
+          ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+          init();
+        });
+
+        init();
+        requestAnimationFrame(frame);
+      })();
+
+      // Small script to set the year dynamically
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>
